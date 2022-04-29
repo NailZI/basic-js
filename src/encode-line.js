@@ -11,31 +11,39 @@ const { NotImplementedError } = require('../extensions/index.js');
  *
  */
 function encodeLine(str) {
-  // throw new NotImplementedError('Not implemented');
-  // remove line with error and write your code here
-  const met = {};
-  let res = '';
-    // met.name = 'John'
+  let sum_arr = [];
+  let code_str = '';
+  let sum = 1;
   for (let i = 0; i < str.length; i++) {
-      // console.log(str[i]);
-      if (str[i] in met) {
-          met.str[i] += 1;
-          // console.log(str[i]);
-      } else {
-          met[str[i]] = 1;
-      }
-  };
-  for (let key in met) {
-    if (String(met[key]) != 1) {
-      res += String(met[key]);
-    };
-      // console.log(met[key]);
-    res += String(key);
-      // console.log(res);
+    let arr_cur = [];
+    let value = str[i];
+    if (value != str[i+1]) {
+      arr_cur.push(value);
+      arr_cur.push(sum);
+      sum_arr.push(arr_cur);
+      sum = 1;
+    } else {
+      sum++
+    }
   }
-  return res;
-}
+    // console.log(sum_arr);
+    sum_arr.forEach((entries) => {
+      if (entries[1] > 1) {
+        code_str += entries[1] + entries[0]
+      } else {
+        code_str += entries[0]
+      }
+    })
+    // console.log(code_str);
+    return code_str;
+  }
+
 
 module.exports = {
   encodeLine
 };
+
+
+// encodeLine('aabbbc') // => '2a3bc'
+// encodeLine('aaaatttt') //
+// encodeLine('abbcca') //abbcca
