@@ -1,26 +1,28 @@
 
-import example from './images/19825.png'
 import './css/style.css'
-// создание свойства класса без конструктора
-class Game {
-   game = 'Violin Charades'
+import buttons from './buttons'
+
+const div_wrapper = document.createElement('div')
+div_wrapper.className = 'wrapper'
+
+for (let i = 0; i < buttons.length; i++) {
+    const div_row = document.createElement('div')
+    div_row.className = 'row'
+    div_wrapper.appendChild(div_row)
+    for (let j = 0; j < buttons[i].length; j++) {
+        const div_btn = document.createElement('div')
+        div_btn.className = 'btn'
+        div_btn.textContent = buttons[i][j]
+        div_btn.setAttribute('id', i*10+j)
+        div_row.appendChild(div_btn)
+    }
 }
-const myGame = new Game()
 
-// создаем параграф
-const p = document.createElement('p')
-p.className = 'like'
-p.textContent = `I like ${myGame.game}.`
+const textarea = document.createElement('textarea')
+// textarea.textContent = 'Probe1'
+textarea.setAttribute('rows', 10)
+textarea.setAttribute('cols', 50)
 
-// создаем элемент заголовка
-const heading = document.createElement('h1')
-heading.textContent = 'Как интересно! ... было, пока что-то не пошло не так.'
-
-const div = document.createElement('div')
-div.textContent = 'Probe1'
-const div2 = document.createElement('div')
-div2.textContent = 'Probe2'
-
-// добавляем параграф и заголовок в DOM
+// добавляем div в DOM
 const root = document.querySelector('#root')
-root.append(heading, div, div2, p)
+root.append(textarea, div_wrapper)
