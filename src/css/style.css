@@ -1,0 +1,23 @@
+body {
+    background-color:rgb(0, 255, 38)
+}
+
+#root {
+    width: 100%;
+}
+
+h1 {
+    color: red;
+    width: 100%;
+    background-color: #fff;
+}
+
+p {
+    color: red;
+}
+
+div {
+    height: 100px;
+    width: 200px;
+    background-color: rgb(17, 0, 255);
+}
